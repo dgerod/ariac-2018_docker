@@ -1,4 +1,5 @@
 FROM gazebo:latest
+
 # This image extends from nvidia-gazebo image to also provide ROS
 
 USER root
@@ -14,7 +15,7 @@ RUN apt-key adv --keyserver ha.pool.sks-keyservers.net --recv-keys 421C365BD9FF1
 # setup sources.list
 RUN echo "deb http://packages.ros.org/ros/ubuntu ${UBUNTU_DISTRO_TO_BUILD} main" > /etc/apt/sources.list.d/ros-latest.list
 # install bootstrap tools
-RUN apt-get update && apt-get install --no-install-recommends -y \
+RUN apt-get update && apt-get install --no-install-recommends -y --allow-unauthenticated \
     python-rosdep \
     python-rosinstall \
     python-vcstools \
@@ -26,7 +27,7 @@ RUN rosdep init \
 
 # install ros packages
 ENV ROS_DISTRO ${ROS_DISTRO_BUILD_TIME}
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --allow-unauthenticated \
     ros-${ROS_DISTRO_BUILD_TIME}-ros-core \
     ros-${ROS_DISTRO_BUILD_TIME}-ros-base \
 	&& apt-get clean \

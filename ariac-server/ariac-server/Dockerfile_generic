@@ -1,10 +1,11 @@
 FROM gazebo-ros:latest
+
 USER root
 
 ARG ROS_DISTRO_BUILD_TIME
 
 # Install the ariac package
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --allow-unauthenticated \
         ros-${ROS_DISTRO_BUILD_TIME}-ros-controllers \
         ros-${ROS_DISTRO_BUILD_TIME}-robot-state-publisher \
         ariac2 \
@@ -12,7 +13,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Needed to use killall
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --allow-unauthenticated \
         psmisc \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*

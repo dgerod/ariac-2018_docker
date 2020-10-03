@@ -3,13 +3,13 @@ FROM ubuntu:trusty
 ARG UBUNTU_DISTRO_TO_BUILD=trusty
 
 # setup keys
-RUN apt-key adv --keyserver ha.pool.sks-keyservers.net --recv-keys D2486D2DD83DB69272AFE98867170598AF249743
+RUN apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-keys D2486D2DD83DB69272AFE98867170598AF249743
 
 # setup sources.list
 RUN echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable ${UBUNTU_DISTRO_TO_BUILD} main" > /etc/apt/sources.list.d/gazebo-latest.list
 
 # install gazebo packages
-RUN apt-get update && apt-get install -q -y \
+RUN apt-get update && apt-get install -q -y --allow-unauthenticated \
     gazebo8 \
     libgazebo8-dev \
     wget \
