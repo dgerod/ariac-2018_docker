@@ -7,6 +7,10 @@
 
 set -e
 
+TASK_CONFIG=$1
+USER_CONFIG=$2
+DST_FOLDER=$3
+
 # Constants.
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -22,10 +26,6 @@ usage()
 
 # Call usage() function if arguments not supplied.
 [[ $# -ne 3 ]] && usage
-
-TASK_CONFIG=$1
-USER_CONFIG=$2
-DST_FOLDER=$3
 
 # Create a directory for the Gazebo log and the score file.
 if [ -d "$DST_FOLDER" ]; then

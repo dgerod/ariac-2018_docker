@@ -1,4 +1,8 @@
 #!/bin/bash -x
+#
+# Only works with ROS kinetic
+#
+
 set -e
 
 # Uncoment this line to rebuild without cache
@@ -13,19 +17,8 @@ if [[ $# -lt 1 ]]; then
   exit 1
 fi
 
-ROS_DISTRO_BUILD_TIME=${1}
-
-case ${ROS_DISTRO_BUILD_TIME} in
-  indigo)
-    UBUNTU_DISTRO_TO_BUILD=trusty
-    ;;
-  kinetic)
-    UBUNTU_DISTRO_TO_BUILD=xenial
-    ;;
-  *)
-    echo "ROS distribution unsupported: ${ROS_DISTRO_BUILD_TIME}"
-    exit 1
-esac
+ROS_DISTRO_BUILD_TIME=kinetic
+UBUNTU_DISTRO_TO_BUILD=xenial
 
 docker_images="gzserver gazebo gazebo-ros nvidia-gazebo-ros ariac-server"
 

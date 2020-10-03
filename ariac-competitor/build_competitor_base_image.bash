@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
+#
+# Only works with ROS Kinetic
+#
+
 set -e
+
+ROS_DISTRO_BUILD_TIME=kinetic
+UBUNTU_DISTRO_TO_BUILD=xenial
 
 # Comment this line to rebuild using the cache
 DOCKER_ARGS="--no-cache"
@@ -10,20 +17,6 @@ if [[ $# -lt 1 ]]; then
   echo "$0 <ros-distro-to-build>"
   exit 1
 fi
-
-ROS_DISTRO_BUILD_TIME=${1-indigo}
-
-case ${ROS_DISTRO_BUILD_TIME} in
-  indigo)
-    UBUNTU_DISTRO_TO_BUILD=trusty
-    ;;
-  kinetic)
-    UBUNTU_DISTRO_TO_BUILD=xenial
-    ;;
-  *)
-    echo "ROS distribution unsupported: ${ROS_DISTRO_BUILD_TIME}"
-    exit 1
-esac
 
 # Create a Dockerfile from the template
 cp ${DIR}/ariac-competitor-base/Dockerfile_generic \

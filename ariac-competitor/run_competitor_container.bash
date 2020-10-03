@@ -10,14 +10,14 @@
 set -e
 set -x
 
+IMAGE_NAME=$1
+COMMAND=$2
+
 # Constants.
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[0;33m'
 NOCOLOR='\033[0m'
-
-IMAGE_NAME=$1
-COMMAND=$2
 
 CONTAINER="${IMAGE_NAME}-system"
 DOCKER_EXTRA_ARGS=""
