@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 
-TEAM_NAME=$1
-
 # Constants.
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[0;33m'
 NOCOLOR='\033[0m'
+
+# Arguments
+TEAM_NAME=$1
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 

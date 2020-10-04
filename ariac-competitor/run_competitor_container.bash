@@ -16,16 +16,16 @@ GREEN='\033[0;32m'
 YELLOW='\033[0;33m'
 NOCOLOR='\033[0m'
 
+NETWORK="ariac-network"
+IP="172.18.0.20"
+SERVER_IP="172.18.0.22"
+
 # Arguments
 IMAGE_NAME=$1
 COMMAND=$2
 
 CONTAINER="${IMAGE_NAME}-system"
 DOCKER_EXTRA_ARGS=""
-
-NETWORK="ariac-network"
-IP="172.18.0.20"
-SERVER_IP="172.18.0.22"
 
 echo -e "${GREEN}Starting docker container named '${CONTAINER}' with IP ${IP}...${NOCOLOR}"
 
