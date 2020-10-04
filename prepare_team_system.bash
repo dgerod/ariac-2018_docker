@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
-TEAM_NAME=${1}
-
+# Constants
 YELLOW='\033[0;33m'
 NOCOLOR='\033[0m'
+
+# Arguments
+TEAM_NAME=${1}
 
 if [[ $# -lt 1 ]]; then
   echo "$0 <team-image-dir-name> [--use-cache]"
@@ -16,6 +16,8 @@ if [[ ! -d team_config/${TEAM_NAME} ]]; then
   echo "Can not find team directory in 'team_config' directory: ${TEAM_NAME}"
   exit 1
 fi
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # By default, don't use the Docker cache so that team's systems are always using
 # the most recent packages.
