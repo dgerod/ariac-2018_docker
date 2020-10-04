@@ -20,7 +20,7 @@ if [[ $# -lt 1 ]]; then
   exit 1
 else
   if [[ $1 == 'all' ]]; then
-    DOCKER_IMAGES="gzserver gazebo gazebo-ros nvidia-gazebo-ros ariac-server ariac-server-flatten ariac-server-vnc"
+    DOCKER_IMAGES="gzserver gazebo gazebo-ros nvidia-gazebo-ros ariac-server ariac-server-flatten ariac-server-vnc-flatten"
   else
     DOCKER_IMAGES=$1
   fi
