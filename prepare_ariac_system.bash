@@ -10,5 +10,5 @@ ROS_DISTRO_TO_BUILD="kinetic"
 
 echo "Preparing the ARIAC competition setup"
 
-${DIR}/ariac-server/build-images.sh ${ROS_DISTRO_TO_BUILD}
-${DIR}/ariac-competitor/build_competitor_base_image.bash ${ROS_DISTRO_TO_BUILD}
+${DIR}/ariac-server/build_server_images.bash 'ariac-server-flatten'
+${DIR}/ariac-competitor/build_competitor_base_image.bash

@@ -12,13 +12,15 @@
 
 set -x
 
+# Constants
+NETWORK="ariac-network"
+IP="172.18.0.22"
+
+# Arguments
 CONTAINER=$1
 IMAGE_NAME=$2
 DOCKER_EXTRA_ARGS=$3
 COMMAND=$4
-
-NETWORK="ariac-network"
-IP="172.18.0.22"
 
 # XAUTH=/tmp/.docker.xauth
 # xauth nlist :0 | sed -e 's/^..../ffff/' | xauth -f $XAUTH nmerge -
@@ -30,8 +32,8 @@ fi
 
 # Use lspci to check for the presence of an nvidia graphics card
 # TODO: re-enable nvidia support optionally.
-#has_nvidia=`lspci | grep -i nvidia | wc -l`
-has_nvidia=0
+has_nvidia=`lspci | grep -i nvidia | wc -l`
+#has_nvidia=0
 
 # Set docker gpu parameters
 if [ ${has_nvidia} -gt 0 ]
