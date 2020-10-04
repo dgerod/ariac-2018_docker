@@ -7,7 +7,8 @@
 
 FROM ubuntu:xenial
 
-ARG UBUNTU_DISTRO_TO_BUILD=trusty
+ARG UBUNTU_DISTRO_TO_BUILD=xenial
+ARG ROS_DISTRO_BUILD_TIME=kinetic
 
 # Setup keys
 RUN apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-keys D2486D2DD83DB69272AFE98867170598AF249743
@@ -59,9 +60,6 @@ RUN git clone https://github.com/osrf/gazebo_models $HOME/.gazebo/models
 # -----------------------------------------------------
 # Instructions derived from https://github.com/osrf/docker_images/tree/master/ros
 
-ARG UBUNTU_DISTRO_TO_BUILD
-ARG ROS_DISTRO_BUILD_TIME
-
 USER root
 
 # Setup ROS keys
@@ -91,8 +89,6 @@ RUN apt-get update && apt-get install -y --allow-unauthenticated \
 # -----------------------------------------------------
 # ARIAC 2018 (ariac-server)
 # -----------------------------------------------------
-
-ARG ROS_DISTRO_BUILD_TIME
 
 USER root
 
