@@ -5,6 +5,7 @@
 
 set -e
 
+# Constants
 ROS_DISTRO_BUILD_TIME=kinetic
 UBUNTU_DISTRO_TO_BUILD=xenial
 
@@ -12,11 +13,6 @@ UBUNTU_DISTRO_TO_BUILD=xenial
 DOCKER_ARGS="--no-cache"
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
-if [[ $# -lt 1 ]]; then
-  echo "$0 <ros-distro-to-build>"
-  exit 1
-fi
 
 # Create a Dockerfile from the template
 cp ${DIR}/ariac-competitor-base/Dockerfile_generic \

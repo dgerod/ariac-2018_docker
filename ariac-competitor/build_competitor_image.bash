@@ -5,11 +5,13 @@
 
 set -x
 
-TEAM_NAME=$1
-DOCKER_ARGS=$2
-
+# Constants
 ROS_DISTRO_BUILD_TIME=kinetic
 UBUNTU_DISTRO_TO_BUILD=xenial
+
+# Arguments
+TEAM_NAME=$1
+DOCKER_ARGS=$2
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 TEAM_CONFIG_DIR=${DIR}/../team_config/${TEAM_NAME}
