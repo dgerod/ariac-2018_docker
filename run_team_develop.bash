@@ -12,10 +12,9 @@ NOCOLOR='\033[0m'
 
 # Arguments
 TEAM_NAME=$1
-TRIAL_NAME=$2
 
-IMAGE_NAME="ariac-competitor-devel-${TEAM_NAME}"
-CONTAINER_NAME="${IMAGE_NAME}-system"
+HOST_WORKSPACE_DIR="/home/dieesrod/Workspaces/ARIAC-2018/cdad_workspace"
+WORKSPACE_DIR="/home/ariac-user/my_team_ws"
 
 # Create the directory that logs will be copied into. Since the userid of the user in the container
 # might different to the userid of the user running this script, we change it to be public-writable.
@@ -43,11 +42,15 @@ LOG_DIR=/ariac/logs
 # Start the competition server. When the trial ends, the container will be killed.
 # The trial may end because of time-out, because of completion, or because the user called the
 # /ariac/end_competition service.
+IMAGE_NAME="ariac-competitor-devel-${TEAM_NAME}"
+CONTAINER_NAME="${IMAGE_NAME}-system"
+
 echo -e "${GREEN}Starting docker container named '${CONTAINER}' with IP ${IP}...${NOCOLOR}"
 
 ./ariac-server/run_container.bash ${CONTAINER_NAME} ${IMAGE_NAME}:latest \
   "-v ${TEAM_CONFIG_DIR}:/team_config \
   -v ${COMP_CONFIG_DIR}:/ariac/trial_config \
+  -v ${HOST_WORKSPACE_DIR}:${WORKSPACE_DIR} \
   -v ${HOST_LOG_DIR}:${LOG_DIR} \
   -e ARIAC_EXIT_ON_COMPLETION=1 \
   -p 6080:80"

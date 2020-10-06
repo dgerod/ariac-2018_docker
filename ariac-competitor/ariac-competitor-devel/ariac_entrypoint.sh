@@ -5,15 +5,16 @@ set -e
 # ariac
 # -------------------------------------------------
 
+echo "configure ariac"
+
 # first, execute overriden entrypoint from gazebo
 source "/usr/share/gazebo/setup.sh"
-
 # setup ros environment. Ignore redifiniton of ROS_DISTRO
 source "/opt/ros/${ROS_DISTRO}/setup.bash" > /dev/null
-
 # setup ariac environment
 source "/opt/ros/${ROS_DISTRO}/etc/catkin/profile.d/99_osrf_gear_setup.sh"
-echo "ariac entrypoint executed"
+
+echo "export gazebo variables"
 
 # run gear
 # TODO: optionally disable this so a gzclient can be run on the host for development.
@@ -23,6 +24,8 @@ export GAZEBO_IP_WHITE_LIST=127.0.0.1
 # -------------------------------------------------
 # vnc
 # -------------------------------------------------
+
+echo "starup vnc"
 
 mkdir -p /var/run/sshd
 chown -R root:root /root
