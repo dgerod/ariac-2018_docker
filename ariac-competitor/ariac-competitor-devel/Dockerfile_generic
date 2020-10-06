@@ -136,8 +136,7 @@ RUN rosdep init \
 # Install ros packages
 ENV ROS_DISTRO ${ROS_DISTRO_BUILD_TIME}
 RUN apt-get update && apt-get install -y --allow-unauthenticated \
-    ros-${ROS_DISTRO_BUILD_TIME}-ros-core \
-    ros-${ROS_DISTRO_BUILD_TIME}-ros-base \
+    ros-${ROS_DISTRO_BUILD_TIME}-desktop \
 	&& apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
