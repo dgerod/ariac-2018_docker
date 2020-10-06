@@ -2,5 +2,7 @@
 
 set -e
 
-CONTAINER_NAME="ariac-server-system"
+TEAM_NAME=$1
+
+CONTAINER_NAME="ariac-competitor-devel-${TEAM_NAME}-system"
 docker container exec -it ${CONTAINER_NAME} bash
