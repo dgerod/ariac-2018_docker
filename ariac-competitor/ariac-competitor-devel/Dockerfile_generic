@@ -137,6 +137,8 @@ RUN rosdep init \
 ENV ROS_DISTRO ${ROS_DISTRO_BUILD_TIME}
 RUN apt-get update && apt-get install -y --allow-unauthenticated \
     ros-${ROS_DISTRO_BUILD_TIME}-desktop \
+    ros-${ROS_DISTRO_BUILD_TIME}-moveit-python \
+    ros-${ROS_DISTRO_BUILD_TIME}-moveit-commander \
 	&& apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -187,6 +189,7 @@ RUN /bin/bash -c "source /opt/ros/${ROS_DISTRO_BUILD_TIME}/setup.bash && \
 
 COPY ./ariac_entrypoint.sh /
 COPY ./run_ariac_task.sh /
+COPY ./run_ariac_task_gui.sh /
 
 ENV USERNAME ariac-user
 RUN adduser --gecos "Development User" --disabled-password $USERNAME

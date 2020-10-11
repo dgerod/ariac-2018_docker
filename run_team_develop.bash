@@ -13,7 +13,7 @@ NOCOLOR='\033[0m'
 # Arguments
 TEAM_NAME=$1
 
-HOST_WORKSPACE_DIR="/home/dieesrod/Workspaces/ARIAC-2018/cdad_workspace"
+HOST_WORKSPACE_DIR="/home/dieesrod/Workspaces/ARIAC-2018/example_workspace"
 WORKSPACE_DIR="/home/ariac-user/my_team_ws"
 
 # Create the directory that logs will be copied into. Since the userid of the user in the container
