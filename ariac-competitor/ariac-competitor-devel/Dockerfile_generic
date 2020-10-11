@@ -137,9 +137,17 @@ RUN rosdep init \
 ENV ROS_DISTRO ${ROS_DISTRO_BUILD_TIME}
 RUN apt-get update && apt-get install -y --allow-unauthenticated \
     ros-${ROS_DISTRO_BUILD_TIME}-desktop \
-    ros-${ROS_DISTRO_BUILD_TIME}-moveit-python \
-    ros-${ROS_DISTRO_BUILD_TIME}-moveit-commander \
-	&& apt-get clean \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# -----------------------------------------------------
+# Competitor specific ROS packages
+# -----------------------------------------------------
+
+# Install moveit!
+RUN apt-get update && apt-get install -y --allow-unauthenticated \
+    ros-${ROS_DISTRO_BUILD_TIME}-moveit \
+    && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
 # -----------------------------------------------------
