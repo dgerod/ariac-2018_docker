@@ -6,7 +6,7 @@ This repository contains the setup that will be used to automatically evaluate t
 
 This repository is a modification of https://github.com/osrf/ariac-docker. Main differences:
     
- * It the only works with ROS Kinetic, any reference to other ROS versions have been removed.
+ * It only works with ROS Kinetic, any reference to other ROS versions have been removed.
  * A server flatten image has been added. So, other server images are not needed although they already exit.
  * A competitor image for development has been added. This image has VNC so Gazebo and other graphic tools could be used.
 
