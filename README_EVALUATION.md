@@ -8,8 +8,6 @@ The setup that is created by the code in this repository is the setup that will 
 
 There are two main components to the ARIAC competition setup: the ARIAC server, and the competitor's system. For security and reproducibility, the ARIAC server and the competitor's system are run in separate isolated environments called containers. Docker is used to create these containers.
 
-ATTENTION: It only works with ROS Kinetic !!!
-
 ## Getting the code
 
 Clone this code repository locally:
