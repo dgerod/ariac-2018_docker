@@ -141,7 +141,7 @@ RUN apt-get update && apt-get install -y --allow-unauthenticated \
     && rm -rf /var/lib/apt/lists/*
 
 # -----------------------------------------------------
-# Competitor specific ROS packages
+# [!] COMPETITOR specific ROS packages
 # -----------------------------------------------------
 
 # Install moveit!
@@ -149,7 +149,7 @@ RUN apt-get update && apt-get install -y --allow-unauthenticated \
     ros-${ROS_DISTRO_BUILD_TIME}-moveit \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
-
+    
 # -----------------------------------------------------
 # ARIAC 2018 (ariac-server)
 # -----------------------------------------------------
@@ -187,6 +187,19 @@ RUN /bin/bash -c "source /opt/ros/${ROS_DISTRO_BUILD_TIME}/setup.bash && \
 RUN git clone \
       https://github.com/ros-simulation/gazebo_ros_pkgs /tmp/ros_ws/src/gazebo_ros_pkgs \
       -b ariac-network-${ROS_DISTRO_BUILD_TIME}
+RUN /bin/bash -c "source /opt/ros/${ROS_DISTRO_BUILD_TIME}/setup.bash && \
+                  cd /tmp/ros_ws/ && \
+                  catkin_make -DCMAKE_INSTALL_PREFIX=/opt/ros/${ROS_DISTRO_BUILD_TIME} -j2 install "
+
+# -----------------------------------------------------
+# [!] COMPETITOR specific packages
+# -----------------------------------------------------
+
+# Install IIWA Stack from source
+RUN git clone \
+    https://github.com/dgerod/ariac-2018_iiwa_stack /tmp/ros_ws/src/iiwa_stack \
+    -b ariac 
+
 RUN /bin/bash -c "source /opt/ros/${ROS_DISTRO_BUILD_TIME}/setup.bash && \
                   cd /tmp/ros_ws/ && \
                   catkin_make -DCMAKE_INSTALL_PREFIX=/opt/ros/${ROS_DISTRO_BUILD_TIME} -j2 install "
