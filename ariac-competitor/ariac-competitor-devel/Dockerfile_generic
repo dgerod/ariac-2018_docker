@@ -198,7 +198,7 @@ RUN /bin/bash -c "source /opt/ros/${ROS_DISTRO_BUILD_TIME}/setup.bash && \
 # Install IIWA Stack from source
 RUN git clone \
     https://github.com/dgerod/ariac-2018_iiwa_stack /tmp/ros_ws/src/iiwa_stack \
-    -b ariac 
+    -b ariac_2018 
 
 RUN /bin/bash -c "source /opt/ros/${ROS_DISTRO_BUILD_TIME}/setup.bash && \
                   cd /tmp/ros_ws/ && \
