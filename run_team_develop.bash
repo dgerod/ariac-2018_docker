@@ -12,9 +12,7 @@ NOCOLOR='\033[0m'
 
 # Arguments
 TEAM_NAME=$1
-
-HOST_WORKSPACE_DIR="/home/dieesrod/Workspaces/ARIAC-2018/example_workspace"
-WORKSPACE_DIR="/home/ariac-user/my_team_ws"
+HOST_WORKSPACE_DIR=$2
 
 # Create the directory that logs will be copied into. Since the userid of the user in the container
 # might different to the userid of the user running this script, we change it to be public-writable.
@@ -31,6 +29,7 @@ COMP_CONFIG_DIR=`pwd`/trial_config
 echo "Using comp config: ${COMP_CONFIG_DIR}/${TRIAL_NAME}.yaml"
 
 ROS_DISTRO=kinetic
+WORKSPACE_DIR="/home/ariac-user/my_team_ws"
 LOG_DIR=/ariac/logs
 
 # Ensure any previous containers are killed and removed.
